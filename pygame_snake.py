@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+
 pygame.init()
 apple_eat =  pygame.mixer.Sound("apple_eat.Wav")
 pygame.mixer.music.load("apple_music.mp3")
@@ -8,9 +9,9 @@ white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
 green = (0 , 225 ,0)
-display_width = 800
-display_height = 600
-Applethickness = 30
+display_width = 900
+display_height = 700
+Applethickness = 40
 block_size = 20
 direction = "right"
 gamedisplay = pygame.display.set_mode((display_width,display_height))
@@ -48,10 +49,10 @@ def game_intro():
         
         gamedisplay.fill(white)
         message_to_screen("Welcome to Slither", green, -100 ,"large")
-        message_to_screen("The objective of this game is to eat apple", black, -30 )
-        message_to_screen("More apple you eat , the longer  you get", black, 10 )
+        message_to_screen("The objective of this game is to eat  an many apples possible", black, -30 )
+        message_to_screen("More apple you eat , the longer  you get to live", black, 10 )
         message_to_screen("If you run into yourself , or the edges, you die!", black, 50 )
-        message_to_screen("press C to play and Q to Quit", black, 180 )
+        message_to_screen("press C to play and Q to Quit the Game", black, 180 )
         pygame.display.update()
         clock.tick(15)
     
@@ -90,7 +91,7 @@ def game_loop():
     driection = "right"
     randapplex = round(random.randint(0,display_width-Applethickness ))#/10.0)*10.0
     randappley = round(random.randint(0,display_height-Applethickness ))#/10.0)*10.0
-    gameExit = False
+    gameExit = True
     gameOver = False
     lead_x = display_width/2
     lead_y = display_height/2
@@ -127,7 +128,7 @@ def game_loop():
                     lead_y_change = 0
                 elif event.key == pygame.K_RIGHT:
                     direction = "right"
-                    lead_x_change = 10
+                    lead_x_change = 0
                     lead_y_change = 0
 
                 elif event.key == pygame.K_UP:
@@ -172,7 +173,7 @@ def game_loop():
                 randappley = round(random.randint(0,display_height-Applethickness ))#/10.0)*10.0
                 snakelength+=1
             
-        clock.tick(20)
+        clock.tick(21)
 
 ##    message_to_screen("You Lose",red)
 ##    pygame.display.update()
